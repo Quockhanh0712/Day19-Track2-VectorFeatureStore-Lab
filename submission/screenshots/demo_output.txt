@@ -1,0 +1,60 @@
+Khởi tạo HybridMemoryAgent...
+Thêm Episodic Memories...
+
+--- 5 Demo Queries ---
+
+Query 1 - Hỏi đơn giản (chỉ vector hit):
+"Tôi đã đọc gì về Kubernetes?"
+Assembled Context:
+User likes <unknown> reading at <200> wpm.
+Recent activity: <0> queries in the last hour.
+Top memories:
+  1. Gần đây tôi đang học về Kubernetes và tự động mở rộng hệ thống.
+  2. Cloud security là một chủ đề tôi đang nghiên cứu cho dự án công ty.
+  3. Tôi rất thích đọc sách khoa học viễn tưởng.
+
+----------------------------------------
+Query 2 - Hỏi cần profile context:
+"Recommend đọc gì tiếp"
+Assembled Context:
+User likes <unknown> reading at <200> wpm.
+Recent activity: <0> queries in the last hour.
+Top memories:
+  1. Gần đây tôi đang học về Kubernetes và tự động mở rộng hệ thống.
+  2. Hệ thống của tôi đang cần một phương pháp tự động scale hạ tầng theo lưu lượng người dùng.
+  3. Cloud security là một chủ đề tôi đang nghiên cứu cho dự án công ty.
+
+----------------------------------------
+Query 3 - Hỏi cần fresh activity:
+"Tôi đang quan tâm gì gần đây?"
+Assembled Context:
+User likes <unknown> reading at <200> wpm.
+Recent activity: <0> queries in the last hour.
+Top memories:
+  1. Gần đây tôi đang học về Kubernetes và tự động mở rộng hệ thống.
+  2. Hệ thống của tôi đang cần một phương pháp tự động scale hạ tầng theo lưu lượng người dùng.
+  3. Tôi rất thích đọc sách khoa học viễn tưởng.
+
+----------------------------------------
+Query 4 - Hỏi paraphrase (vector wins):
+"Tài liệu về tự động mở rộng hạ tầng?"
+Assembled Context:
+User likes <unknown> reading at <200> wpm.
+Recent activity: <0> queries in the last hour.
+Top memories:
+  1. Hệ thống của tôi đang cần một phương pháp tự động scale hạ tầng theo lưu lượng người dùng.
+  2. Gần đây tôi đang học về Kubernetes và tự động mở rộng hệ thống.
+  3. Tôi rất thích đọc sách khoa học viễn tưởng.
+
+----------------------------------------
+Query 5 - Hỏi mixed (hybrid + profile):
+"Cho tôi summary cloud security"
+Assembled Context:
+User likes <unknown> reading at <200> wpm.
+Recent activity: <0> queries in the last hour.
+Top memories:
+  1. Cloud security là một chủ đề tôi đang nghiên cứu cho dự án công ty.
+  2. Gần đây tôi đang học về Kubernetes và tự động mở rộng hệ thống.
+  3. Tôi rất thích đọc sách khoa học viễn tưởng.
+
+----------------------------------------

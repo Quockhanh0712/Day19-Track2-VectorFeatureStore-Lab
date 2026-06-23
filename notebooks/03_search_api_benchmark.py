@@ -17,6 +17,7 @@
 import _setup  # noqa: F401
 import statistics
 import subprocess
+import sys
 import time
 from pathlib import Path
 
@@ -31,7 +32,7 @@ import httpx
 # %%
 ROOT = Path(_setup.__file__).resolve().parent.parent
 proc = subprocess.Popen(
-    ["uvicorn", "app.main:app", "--port", "8000", "--log-level", "warning"],
+    [sys.executable, "-m", "uvicorn", "app.main:app", "--port", "8000", "--log-level", "warning"],
     cwd=str(ROOT),
 )
 
@@ -92,6 +93,8 @@ def benchmark_mode(mode: str, reps: int = 2) -> dict[str, float]:
         for q in golden:
             t0 = time.perf_counter()
             r = httpx.get(f"{URL}/search", params={"q": q["query"], "mode": mode})
+            if r.status_code != 200:
+                print(f"ERROR {r.status_code}: {r.text}")
             wall_latencies.append((time.perf_counter() - t0) * 1000)
             server_latencies.append(r.json()["latency_ms"])
     return {
